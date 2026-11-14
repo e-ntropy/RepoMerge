@@ -13,14 +13,6 @@ class PublicExportTests(unittest.TestCase):
   self.assertEqual(normalize('<s> int x = 1;\n'),normalize('int x=1;'))
   self.assertNotEqual(normalize('int x=1;'),normalize('int x=2;'))
   self.assertEqual(len(PATTERNS),9)
- def test_recorded_totals(self):
-  for split,train,total,matches in [('sort_by_prerepo',6674,1663,1011),('sort_by_realtime',6669,1668,559)]:
-   d=PACKAGE/'archive/local_runs'/split;m=json.loads((d/'metrics_by_repository.json').read_text());h=json.loads((d/'training_history.json').read_text());s=json.loads((d/'preparation_stats.json').read_text())
-   self.assertEqual(s['80']['total'],train);self.assertEqual(s['20']['total'],total)
-   self.assertEqual(len(h),10);self.assertTrue(all(x['samples_seen']==train for x in h))
-   self.assertEqual(sum(x['total'] for k,x in m.items() if k!='OVERALL'),total)
-   self.assertEqual(sum(x['matches'] for k,x in m.items() if k!='OVERALL'),matches)
-   self.assertEqual(m['OVERALL']['matches'],matches);self.assertEqual(m['OVERALL']['total'],total)
  def test_notebook_is_clean_and_source_consistent(self):
   nb=json.loads((PACKAGE/'colab_reference/mergebert.ipynb').read_text(encoding='utf-8'))
   for i,c in enumerate(nb['cells']):
@@ -46,5 +38,6 @@ class PublicExportTests(unittest.TestCase):
   self.assertEqual(m['missing_prediction_policy'],'count_as_failure')
   for doc in ['README.md','RESULTS.md','REVIEW_RESPONSE_ZH.md']:
    text=(PACKAGE/doc).read_text(encoding='utf-8');self.assertIn('33.01',text);self.assertIn('33.43',text)
-   self.assertNotIn('60.79',text);self.assertNotIn('33.51',text)
+  self.assertFalse((PACKAGE/'archive/local_runs').exists())
+  self.assertEqual(sorted(x.name for x in (PACKAGE/'reports').iterdir() if x.is_dir() and any(x.iterdir())),['cloud_confirmed_1663_20261114'])
 if __name__=='__main__':unittest.main()

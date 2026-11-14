@@ -14,9 +14,11 @@ def run(root,script,extra=None):
   result=p.wait()
   if result:raise RuntimeError(f'{script} failed: {result}')
 def main():
- for split in ['sort_by_prerepo','sort_by_realtime']:
+ import argparse
+ parser=argparse.ArgumentParser();parser.add_argument("--split",choices=["sort_by_prerepo","sort_by_realtime"],default="sort_by_prerepo");args=parser.parse_args()
+ for split in [args.split]:
   root=BASE/('colab_reproduction_'+split);print('WAITING_DATA',split,flush=True)
-  if not (root/'reports/preparation_stats.json').exists():raise FileNotFoundError('Run import_data.py for both splits, then prepare_all.py first')
+  if not (root/'reports/preparation_stats.json').exists():raise FileNotFoundError('Run import_data.py and prepare_all.py for the selected split first')
   for f in SCRIPTS.glob('*.py'):shutil.copy2(f,root/'scripts'/f.name)
   if not (root/'checkpoints/mergebert.pt').exists():
    run(root,'verify_features.py')

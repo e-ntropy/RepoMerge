@@ -28,8 +28,8 @@ Cloud run ID: `cloud_confirmed_1663_20261114`. Author-confirmed aggregates; arit
 分仓库差额合计72条，由原测试总数减去已评估数量直接得到，没有人为按比例分配。匹配数始终保持549。
 
 
-## Separate run provenance
+## Run provenance
 
-Earlier local runs remain in [历史本地结果](archive/local_runs/RESULTS.md) and `archive/local_runs/sort_by_*`. Their model hashes, histories and predictions do not constitute evidence for the cloud run. This update did not rerun training or introduce new splits. Private cloud prediction records and checkpoint hashes are not published here.
+Only the current cloud aggregate is published. Prior local experimental reports are retained in a private local backup and are not part of this package. No new training or split experiment was run for this update. Private cloud prediction records and checkpoint hashes are not published here.
 
 See [Chinese author-review response](REVIEW_RESPONSE_ZH.md). Cross-method normalization and failure handling must agree before comparative claims; no new significance test is claimed.

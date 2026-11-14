@@ -2,11 +2,11 @@ import os
 os.environ['USE_TORCH']='0'
 from common import *
 import concurrent.futures,collections,time
-from transformers import AutoTokenizer
 from rapidfuzz.distance import Levenshtein
 TOK=None
 CACHE=FEATURE_CACHE
 def init():
+ from transformers import AutoTokenizer
  global TOK
  enable_fast_alignment();TOK=AutoTokenizer.from_pretrained(MODEL,local_files_only=True)
 def encode(seq):
@@ -28,8 +28,10 @@ def process(item):
  path.write_text(json.dumps(record,ensure_ascii=False),encoding='utf-8');return key
 
 def main():
+ import argparse
+ parser=argparse.ArgumentParser();parser.add_argument("--split",choices=["sort_by_prerepo","sort_by_realtime"],default="sort_by_prerepo");args=parser.parse_args()
  parity=json.loads((REFERENCE/'runtime_parity.json').read_text());assert parity['alignment_exact'] and parity['merge_mismatch_count']==0
- CACHE.mkdir(parents=True,exist_ok=True);roots=[BASE/('colab_reproduction_'+s) for s in ['sort_by_prerepo','sort_by_realtime']]
+ CACHE.mkdir(parents=True,exist_ok=True);roots=[BASE/('colab_reproduction_'+s) for s in [args.split]]
  unique={}
  for root in roots:
   for split in ['80','20']:

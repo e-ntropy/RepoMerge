@@ -8,7 +8,7 @@
 
 分仓库表与统计口径见 [RESULTS.md](RESULTS.md)，中文回复见 [REVIEW_RESPONSE_ZH.md](REVIEW_RESPONSE_ZH.md)。云端使用本地上传脚本，因GPU限制分两次执行，不是独立随机种子重复实验。
 
-此前本地实验单列在 [历史本地结果](archive/local_runs/RESULTS.md) 和 `archive/local_runs/sort_by_*`，不作为云端预测或模型来源。本次不新增划分实验。下述命令是公开适配实现的复跑说明，不替代私有云端运行记录，也不保证缺少这些记录时复得549个匹配。实现差异见 [PROTOCOL.md](PROTOCOL.md)。
+本公开包只报告当前云端汇总，不附旧本地实验结果。下述命令是公开适配实现的复跑说明，不替代私有云端运行记录。实现差异见 [PROTOCOL.md](PROTOCOL.md)。
 
 ## 公开内容
 
@@ -16,7 +16,6 @@
 - `colab_reference/cell_*.py`：参考单元源码；模型定义和核心对齐/推理逻辑保持一致。
 - `colab_reference/scripts/`：缓存预处理、全量九分类标签、训练、全量评估、核验和数据导入脚本。
 - `reports/cloud_confirmed_1663_20261114/`：当前云端汇总；无逐样本数据。
-- `archive/local_runs/sort_by_*`：此前本地运行的两种划分各自的配置、训练历史、标签统计、分仓库EM及结果分解；不含样本UID、提交信息或源码片段。
 - `examples/synthetic_raw.json`：手工编写的合成格式样例，不来自实验数据。
 
 ## 环境
@@ -38,14 +37,13 @@ python colab_reference/scripts/download_model.py
 
 ```bash
 python colab_reference/scripts/import_data.py --split sort_by_prerepo --train /path/to/prerepo_train.json --test /path/to/prerepo_test.json
-python colab_reference/scripts/import_data.py --split sort_by_realtime --train /path/to/global_train.json --test /path/to/global_test.json
-python colab_reference/scripts/prepare_all.py
-python colab_reference/scripts/run_colab.py
+python colab_reference/scripts/prepare_all.py --split sort_by_prerepo
+python colab_reference/scripts/run_colab.py --split sort_by_prerepo
 ```
 
 请使用已有的正确划分，不要把合成样例当实验数据。该导入入口不重新推断时间划分；原实验的时间协议和数量见PROTOCOL.md。需要原实验数据才能复核原数值；本PR不声称仅凭公开样例就能重现表中准确率。
 
-默认输出在`runtime/colab_reproduction_sort_by_prerepo`和`runtime/colab_reproduction_sort_by_realtime`；共享缓存位于`runtime/shared/`。可设置`MERGEBERT_RUN_ROOT`指定独立运行目录。新实验应使用空运行目录；入口会跳过已存在的模型或指标，避免无意覆盖。
+默认输出在`runtime/colab_reproduction_sort_by_prerepo`；共享缓存位于`runtime/shared/`。可设置`MERGEBERT_RUN_ROOT`指定独立运行目录。新实验应使用空运行目录；入口会跳过已存在的模型或指标，避免无意覆盖。
 
 每套保存格式化训练/测试数据、逐条标签审计、训练模型与逐条预测。测试集也进行分词和合并预处理，但不生成监督分类标签，真值仅用于最终计分。`verify_final.py`复算全量数量和EM并核验最终模型哈希。
 
