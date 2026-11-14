@@ -30,6 +30,6 @@ Cloud run ID: `cloud_confirmed_1663_20261114`. Author-confirmed aggregates; arit
 
 ## Separate run provenance
 
-Earlier local runs remain in [LOCAL_RESULTS.md](LOCAL_RESULTS.md) and `reports/sort_by_*`. Their model hashes, histories and predictions do not constitute evidence for the cloud run. This update did not rerun training or introduce new splits. Private cloud prediction records and checkpoint hashes are not published here.
+Earlier local runs remain in [历史本地结果](archive/local_runs/RESULTS.md) and `archive/local_runs/sort_by_*`. Their model hashes, histories and predictions do not constitute evidence for the cloud run. This update did not rerun training or introduce new splits. Private cloud prediction records and checkpoint hashes are not published here.
 
 See [Chinese author-review response](REVIEW_RESPONSE_ZH.md). Cross-method normalization and failure handling must agree before comparative claims; no new significance test is claimed.

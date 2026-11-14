@@ -1,5 +1,5 @@
 {
-  "automated_tests_passed": 4,
+  "automated_tests_passed": 5,
   "alignment_reference_cases": 254,
   "synthetic_smoke": {
     "training_records_per_split": 8,
@@ -8,5 +8,8 @@
     "test_supervision_labels_absent": true
   },
   "real_data_or_models_published": false,
-  "full_training_rerun_for_publication": false
+  "full_training_rerun_for_publication": false,
+  "scope": "Public package checks, including cloud aggregate arithmetic and document tables; not independent verification of private cloud predictions.",
+  "historical_local_reports": "archive/local_runs",
+  "current_cloud_run": "cloud_confirmed_1663_20261114"
 }

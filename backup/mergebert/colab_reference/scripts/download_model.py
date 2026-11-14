@@ -1,11 +1,11 @@
-"""Download the public pretrained encoder; verify the exact five local-run files."""
+"""Download the public pretrained encoder; verify the five public upstream files."""
 import argparse,pathlib,os,json,hashlib
 
 def main():
  package=pathlib.Path(__file__).resolve().parents[2]
  run=pathlib.Path(os.environ.get('MERGEBERT_RUN_ROOT',str(package/'runtime'))).resolve()
  p=argparse.ArgumentParser();p.add_argument('--output',type=pathlib.Path,default=pathlib.Path(os.environ.get('MERGEBERT_MODEL_PATH',str(run/'models/CodeBERTa-small-v1'))));a=p.parse_args()
- manifest=json.loads((package/'reports/sort_by_prerepo/model_provenance.json').read_text())
+ manifest=json.loads((package/'resources/pretrained_encoder_manifest.json').read_text())
  os.environ.pop('HF_HUB_OFFLINE',None)
  from huggingface_hub import snapshot_download
  snapshot_download('huggingface/CodeBERTa-small-v1',local_dir=a.output,allow_patterns=list(manifest))
