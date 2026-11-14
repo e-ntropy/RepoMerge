@@ -1,0 +1,45 @@
+{
+  "by_prediction_path": {
+    "classifier": {
+      "total": 892,
+      "matches": 422,
+      "em": 0.4730941704035874,
+      "predicted_label_counts": {
+        "0": 738,
+        "1": 108,
+        "4": 22,
+        "2": 9,
+        "8": 1,
+        "3": 3,
+        "5": 11
+      }
+    },
+    "clean_merge": {
+      "total": 728,
+      "matches": 588,
+      "em": 0.8076923076923077,
+      "predicted_label_counts": {}
+    },
+    "multiple_conflict_colab_fallback": {
+      "total": 43,
+      "matches": 1,
+      "em": 0.023255813953488372,
+      "predicted_label_counts": {
+        "0": 24,
+        "1": 8,
+        "8": 10,
+        "5": 1
+      }
+    }
+  },
+  "direct_side_baseline_matches": {
+    "a": 218,
+    "b": 522,
+    "o": 27
+  },
+  "total": 1663,
+  "empty_fallback_matches": 1,
+  "prediction_equals_b": 768,
+  "failure_excluded_matches": 1010,
+  "failure_excluded_em": 0.6073361395069152
+}

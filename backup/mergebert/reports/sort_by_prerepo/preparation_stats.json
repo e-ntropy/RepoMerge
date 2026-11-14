@@ -1,0 +1,43 @@
+{
+  "80": {
+    "total": 6674,
+    "conflict_count_0": 2249,
+    "approximate_label": 2587,
+    "label_1": 1926,
+    "label_0": 3895,
+    "exact_label": 4087,
+    "conflict_count_1": 4186,
+    "label_2": 280,
+    "label_4": 206,
+    "conflict_count_2": 194,
+    "conflict_count_5": 2,
+    "conflict_count_3": 19,
+    "label_5": 122,
+    "label_3": 141,
+    "label_8": 38,
+    "label_6": 47,
+    "label_7": 19,
+    "conflict_count_4": 7,
+    "conflict_count_6": 4,
+    "conflict_count_8": 1,
+    "conflict_count_16": 1,
+    "conflict_count_29": 1,
+    "conflict_count_54": 1,
+    "conflict_count_41": 1,
+    "conflict_count_39": 1,
+    "conflict_count_50": 1,
+    "conflict_count_7": 4,
+    "conflict_count_46": 1,
+    "conflict_count_49": 1
+  },
+  "20": {
+    "total": 1663,
+    "conflict_count_0": 728,
+    "conflict_count_1": 892,
+    "conflict_count_2": 33,
+    "conflict_count_3": 6,
+    "conflict_count_5": 1,
+    "conflict_count_18": 1,
+    "conflict_count_4": 2
+  }
+}

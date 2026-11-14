@@ -1,0 +1,12 @@
+{
+  "automated_tests_passed": 4,
+  "alignment_reference_cases": 254,
+  "synthetic_smoke": {
+    "training_records_per_split": 8,
+    "test_records_per_split": 2,
+    "all_features_equal_reference": true,
+    "test_supervision_labels_absent": true
+  },
+  "real_data_or_models_published": false,
+  "full_training_rerun_for_publication": false
+}
