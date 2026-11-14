@@ -1,5 +1,7 @@
 # 实验协议与必要差异
 
+> 下文记录公开适配实现和此前本地运行协议。当前云端汇总的证据范围见 RESULTS.md；本地模型哈希、训练历史和行为分解不能替代云端记录。
+
 主要参考为提供的Colab notebook；公开副本清空输出和元数据。补充参考为EditFusion的backup分支中MergeBERT实现：https://github.com/foriLLL/EditFusion/tree/backup 。本实现不使用CodeBERT-base修正版，也不声称恢复了缺失的原始标签生成脚本。
 
 ## 模型与训练
